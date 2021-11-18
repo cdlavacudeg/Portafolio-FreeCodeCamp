@@ -1,0 +1,47 @@
+body{
+    text-align:center;
+    line-height:1.5;
+    color:#333;
+  }
+  #main{
+    margin:30px 8px;
+    padding:15px;
+    border-radius:5px;
+    background:#eee;
+  }
+  h1{
+    font-size:4rem;
+    display:block;
+    font-weight:bold;
+  }
+  #image{
+    display:block;
+    max-width:100%;
+    height:auto;
+    margin:0 auto;
+  }
+  #img-div{
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    background:white;
+    padding:10px;
+    margin:0;
+  }
+  
+  section{
+    display:block;
+  }
+  
+  #list-dates {
+      display:block;
+      max-width: 550px;
+      margin: 0 auto 50px auto;
+      text-align: left;
+      line-height: 1.6;
+  }
+  
+  li{
+    margin:16px 0;
+  }
+  
