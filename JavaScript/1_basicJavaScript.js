@@ -719,3 +719,159 @@ function lookUpProfile(name, prop) {
 }
 
 lookUpProfile("Akira", "likes");
+
+/*&&&&&&&&&&&&&&&&&&&&&&&& MATH &&&&&&&&&&&&&&&&&&&&&&&*/
+/*Generate Random Fractions with JavaScript
+Random numbers are useful for creating random behavior.
+
+JavaScript has a Math.random() function that generates a random decimal number between 0 
+(inclusive) and 1 (exclusive). Thus Math.random() can return a 0 but never return a 1.
+
+Note: Like Storing Values with the Assignment Operator, all function calls will be resolved 
+before the return executes, so we can return the value of the Math.random() function.
+
+*/
+a=Math.random();
+
+/*It's great that we can generate random decimal numbers, but it's even more useful if we use it to generate random whole numbers.
+
+Use Math.random() to generate a random decimal.
+Multiply that random decimal by 20.
+Use another function, Math.floor() to round the number down to its nearest whole number.
+Remember that Math.random() can never quite return a 1 and, because we're rounding down, 
+it's impossible to actually get 20. This technique 
+will give us a whole number between 0 and 19.*/
+b=Math.floor(Math.random() * 20);
+
+/*Instead of generating a random whole number between zero and a given number 
+like we did before, we can generate a random whole number that falls within 
+a range of two specific numbers.
+
+To do this, we'll define a minimum number min and a maximum number max.
+
+Here's the formula we'll use. Take a moment to read it and try to understand 
+what this code is doing:*/
+
+Math.floor(Math.random() * (max - min + 1)) + min
+
+/*Use the parseInt Function
+The parseInt() function parses a string and returns an integer. Here's an example:*/
+
+const a = parseInt("007");
+/*The above function converts the string 007 to the integer 7. 
+If the first character in the string can't be converted into a number, then it returns NaN.*/
+
+/*The parseInt() function parses a string and returns an integer. It takes a second argument f
+or the radix, which specifies the base of the number in the string. The radix can be an 
+integer between 2 and 36.
+
+The function call looks like:
+
+parseInt(string, radix);
+And here's an example:*/
+
+const a = parseInt("11", 2);
+
+/*The radix variable says that 11 is in the binary system, or base 2. 
+This example converts the string 11 to an integer 3.*/
+
+/*Use the Conditional (Ternary) Operator
+The conditional operator, also called the ternary operator, 
+can be used as a one line if-else expression.
+
+The syntax is a ? b : c, where a is the condition, b is the code to run when the condition 
+returns true, and c is the code to run when the condition returns false.
+
+The following function uses an if/else statement to check a condition:*/
+
+function findGreater(a, b) {
+  if(a > b) {
+    return "a is greater";
+  }
+  else {
+    return "b is greater or equal";
+  }
+}
+/*This can be re-written using the conditional operator:*/
+
+function findGreater(a, b) {
+  return a > b ? "a is greater" : "b is greater or equal";
+}
+
+/*Use Multiple Conditional (Ternary) Operators
+In the previous challenge, you used a single conditional operator. 
+You can also chain them together to check for multiple conditions.
+
+The following function uses if, else if, and else statements to check multiple conditions:*/
+
+function findGreaterOrEqual(a, b) {
+  if (a === b) {
+    return "a and b are equal";
+  }
+  else if (a > b) {
+    return "a is greater";
+  }
+  else {
+    return "b is greater";
+  }
+}
+/*The above function can be re-written using multiple conditional operators:*/
+
+function findGreaterOrEqual(a, b) {
+  return (a === b) ? "a and b are equal" 
+    : (a > b) ? "a is greater" 
+    : "b is greater";
+}
+/*It is considered best practice to format multiple conditional operators such 
+that each condition is on a separate line, as shown above. Using multiple 
+conditional operators without proper indentation may make your code hard to read. */
+
+function checkSign(num) {
+  return (num==0) ? 'zero'
+    : (num>0) ? 'positive'
+    :'negative';
+}
+
+checkSign(10);
+
+/* recursive*/
+
+function countup(n) {
+  if (n < 1) {
+    return [];
+  } else {
+    const countArray = countup(n - 1);
+    countArray.push(n);
+    return countArray;
+  }
+}
+console.log(countup(5));
+
+// Only change code below this line
+function countdown(n){
+  
+  if(n<1){
+    return [];
+  }else{
+    const countArray=countdown(n-1);
+    countArray.unshift(n);
+    return countArray;
+  }
+}
+// Only change code above this line
+console.log(countdown(5));
+/*Last Recursive Challenge*/
+function rangeOfNumbers(startNum, endNum) {
+
+  if(endNum<startNum){
+    return [];
+  }else{
+    const array=rangeOfNumbers(startNum,endNum-1);
+    array.push(endNum);
+    return array;
+
+  }
+  
+};
+
+console.log(rangeOfNumbers(6,10))
