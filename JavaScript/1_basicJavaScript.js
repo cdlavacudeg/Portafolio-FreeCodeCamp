@@ -411,3 +411,311 @@ function isEqual(a, b) {
 /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 /*When a return statement is reached, the execution of the current function stops 
 and control returns to the calling location.*/
+let count = 0;
+
+function cc(card) {
+  // Only change code below this line
+  if(card>=2 && card<=6){
+    count +=1;
+  }else if(card>=7 && card<=9){
+    count +=0;
+  }else{
+    count -=1;
+  }
+
+  if(count>0){
+    return count+" Bet";
+  }else{
+    return count+" Hold";
+  }
+
+  // Only change code above this line
+}
+
+cc(2); cc(3); cc(7); cc('K'); cc('A');
+
+/*You may have heard the term object before.
+
+Objects are similar to arrays, except that instead of using indexes to access and 
+modify their data, you access the data in objects through what are called properties.
+
+Objects are useful for storing data in a structured way, and can represent real 
+world objects, like a cat.
+
+Here's a sample cat object:*/
+
+const cat = {
+  "name": "Whiskers",
+  "legs": 4,
+  "tails": 1,
+  "enemies": ["Water", "Dogs"]
+};
+/*In this example, all the properties are stored as strings, such as name, 
+legs, and tails. However, you can also use numbers as properties. 
+You can even omit the quotes for single-word string properties, as follows:*/
+
+const anotherObject = {
+  make: "Ford",
+  5: "five",
+  "model": "focus"
+};
+/*However, if your object has any non-string properties, JavaScript will automatically
+ typecast them as strings.*/
+ 
+ /*We can also delete properties from objects like this:*/
+
+ delete ourDog.bark;
+
+ // Setup
+function phoneticLookup(val) {
+  let result = "";
+
+  // Only change code below this line
+  const lookup = {
+    "alpha": "Adams",
+    "bravo": "Boston",
+    "charlie": "Chicago",
+    "delta": "Denver",
+    "echo": "Easy",
+    "foxtrot": "Frank"
+  }
+  result= lookup[val];
+  // Only change code above this line
+  return result;
+}
+
+phoneticLookup("charlie");
+
+/*Sometimes it is useful to check if the property of a given object exists or not. 
+We can use the .hasOwnProperty(propname) method of objects to determine if that 
+object has the given property name. .hasOwnProperty() returns true or false if the 
+property is found or not.*/
+
+
+const myObj = {
+  top: "hat",
+  bottom: "pants"
+};
+
+myObj.hasOwnProperty("top");
+myObj.hasOwnProperty("middle");
+
+/*The first hasOwnProperty returns true, while the second returns false.*/
+
+function checkObj(obj, checkProp) {
+  // Only change code below this line
+  if(obj.hasOwnProperty(checkProp)){
+    return obj[checkProp];
+  }
+  return "Not Found";
+  // Only change code above this line
+}
+
+const myStorage = {
+  "car": {
+    "inside": {
+      "glove box": "maps",
+      "passenger seat": "crumbs"
+     },
+    "outside": {
+      "trunk": "jack"
+    }
+  }
+};
+
+const gloveBoxContents = myStorage.car.inside['glove box'];
+
+/*Record Collection
+You are given an object literal representing a part of your musical album collection. 
+Each album has a unique id number as its key and several other properties. 
+Not all albums have complete information.
+
+You start with an updateRecords function that takes an object literal, records, 
+containing the musical album collection, an id, a prop (like artist or tracks), 
+and a value. Complete the function using the rules below to modify t
+he object passed to the function.
+
+Your function must always return the entire record collection object.
+If prop isn't tracks and value isn't an empty string, update or set that album's prop to value.
+If prop is tracks but the album doesn't have a tracks property,
+ create an empty array and add value to it.
+
+If prop is tracks and value isn't an empty string, add value to the end of the album's 
+existing tracks array.
+If value is an empty string, delete the given prop property from the album.
+Note: A copy of the recordCollection object is used for the tests.*/
+// Setup
+const recordCollection = {
+  2548: {
+    albumTitle: 'Slippery When Wet',
+    artist: 'Bon Jovi',
+    tracks: ['Let It Rock', 'You Give Love a Bad Name']
+  },
+  2468: {
+    albumTitle: '1999',
+    artist: 'Prince',
+    tracks: ['1999', 'Little Red Corvette']
+  },
+  1245: {
+    artist: 'Robert Palmer',
+    tracks: []
+  },
+  5439: {
+    albumTitle: 'ABBA Gold'
+  }
+};
+
+// Only change code below this line
+// Setup
+const recordCollection = {
+  2548: {
+    albumTitle: 'Slippery When Wet',
+    artist: 'Bon Jovi',
+    tracks: ['Let It Rock', 'You Give Love a Bad Name']
+  },
+  2468: {
+    albumTitle: '1999',
+    artist: 'Prince',
+    tracks: ['1999', 'Little Red Corvette']
+  },
+  1245: {
+    artist: 'Robert Palmer',
+    tracks: []
+  },
+  5439: {
+    albumTitle: 'ABBA Gold'
+  }
+};
+
+// Only change code below this line
+function updateRecords(records, id, prop, value) {
+
+  if(prop!='tracks' && value!=""){
+    records[id][prop]=value;
+  }else if (prop=='tracks' && !records[id].hasOwnProperty('tracks')){
+    var tracks=[];
+    tracks.push(value);
+    records[id].tracks=tracks;
+  }else if(prop=='tracks'&& value!==""){
+    records[id].tracks.push(value);
+  }else{
+    delete records[id][prop];
+  }
+  
+  return records;
+}
+
+var o=updateRecords(recordCollection, 5439, 'tracks', 'Take a Chance on Me');
+
+/*%%%%%%%%%%%%% LOOPS &&&&&&&&&&&&&&&&&&&*/
+// Setup
+const myArray = [];
+
+// Only change code below this line
+for(var i=1;i<=5;i++){
+  myArray.push(i);
+}
+
+// Setup
+const myArr = [2, 3, 4, 5, 6];
+
+// Only change code below this line
+var total=0;
+
+for(let i=0;i<myArr.length;i++){
+  total+=myArr[i];
+}
+
+function multiplyAll(arr) {
+  let product = 1;
+  // Only change code below this line
+  for(let i=0;i<arr.length;i++){
+    for(let j=0;j<arr[i].length;j++){
+      product *=arr[i][j];
+    }
+  }
+  // Only change code above this line
+  return product;
+}
+
+multiplyAll([[1, 2], [3, 4], [5, 6, 7]]);
+
+/*The next type of loop you will learn is called a do...while loop. 
+It is called a do...while loop because it will first do one pass of 
+the code inside the loop no matter what, and then continue to run the 
+loop while the specified condition evaluates to true.*/
+
+const ourArray = [];
+let i = 0;
+
+do {
+  ourArray.push(i);
+  i++;
+} while (i < 5);
+
+
+/*RECURSIVE FUNCTIONS */
+function multiply(arr, n) {
+  if (n <= 0) {
+    return 1;
+  } else {
+    return multiply(arr, n - 1) * arr[n - 1];
+  }
+}
+
+function sum(arr, n) {
+  // Only change code below this line
+  if(n<=0){
+    return 0;
+  }else{
+    return sum(arr,n-1)+arr[n-1]; 
+  }
+  // Only change code above this line
+}
+
+// Setup
+const contacts = [
+  {
+    firstName: "Akira",
+    lastName: "Laine",
+    number: "0543236543",
+    likes: ["Pizza", "Coding", "Brownie Points"],
+  },
+  {
+    firstName: "Harry",
+    lastName: "Potter",
+    number: "0994372684",
+    likes: ["Hogwarts", "Magic", "Hagrid"],
+  },
+  {
+    firstName: "Sherlock",
+    lastName: "Holmes",
+    number: "0487345643",
+    likes: ["Intriguing Cases", "Violin"],
+  },
+  {
+    firstName: "Kristian",
+    lastName: "Vos",
+    number: "unknown",
+    likes: ["JavaScript", "Gaming", "Foxes"],
+  },
+];
+
+function lookUpProfile(name, prop) {
+  // Only change code below this line
+  for(var i=0;i<contacts.length;i++){
+    var contact=contacts[i];
+    if(contact.firstName==name){
+      if(contact.hasOwnProperty(prop)){
+        return contact[prop];
+      }else{
+        return "No such property"
+      }
+      
+    }
+  }
+  return "No such contact";
+  // Only change code above this line
+}
+
+lookUpProfile("Akira", "likes");
