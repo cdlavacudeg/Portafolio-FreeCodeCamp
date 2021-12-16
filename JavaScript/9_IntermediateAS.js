@@ -667,5 +667,374 @@ function convertHTML(str) {
 }
 
 
+function sumFibs(num) {
+  let arrFib=[];
+  if (num <= 0) return 0;
 
+  let fibonacci=(value)=>{
+      if(value==1){
+        return 1;
+      }else if(value==0){
+        return 0;
+      }else{
+          return fibonacci(value-2)+fibonacci(value-1);
+        }
+    }
+  
+  for(let i=0;i<=num;i++){
+    arrFib.push(fibonacci(i));
+  }
+  
+  
+return arrFib.filter(value=>value<=num && value%2!=0)
+                .reduce((a,b) => a + b);
+  }
+
+
+  function sumFibs(num) {
+    // Perform checks for the validity of the input
+    if (num <= 0) return 0;
+  
+    // Create an array of fib numbers till num
+    const arrFib = [1, 1];
+    let nextFib = 0;
+  
+    // We put the new Fibonacci numbers to the front so we
+    // don't need to calculate the length of the array on each
+    // iteration
+    while ((nextFib = arrFib[0] + arrFib[1]) <= num) {
+      arrFib.unshift(nextFib);
+    }
+  
+    // We filter the array to get the odd numbers and reduce them to get their sum.
+    return arrFib.filter(x => x % 2 != 0).reduce((a, b) => a + b);
+  }
+
+  function sumFibs(num) {
+    let prevNumber = 0;
+    let currNumber = 1;
+    let result = 0;
+    while (currNumber <= num) {
+      if (currNumber % 2 !== 0) {
+        result += currNumber;
+      }
+      currNumber += prevNumber;
+      prevNumber = currNumber - prevNumber;
+    }
+  
+    return result;
+  }
+  
 console.log(convertHTML("Dolce & Gabbana"));
+
+/*Sum All Primes
+A prime number is a whole number greater than 1 with exactly two divisors: 1 and itself. For example, 2 is a prime number because it is only divisible by 1 and 2. In contrast, 4 is not prime since it is divisible by 1, 2 and 4.
+
+Rewrite sumPrimes so it returns the sum of all prime numbers that are less than or equal to num.*/
+
+function sumPrimes(num) {
+  const getPrimes=(max)=> { 
+    var sieve = [], i, j, primes = [];
+    for (i = 2; i <= max; ++i) {
+        if (!sieve[i]) {
+            // i has not been marked -- it is prime
+            primes.push(i);
+            for (j = i << 1; j <= max; j += i) {
+                sieve[j] = true;
+            }
+        }
+    }
+    return primes;
+  }
+
+  return getPrimes(num).reduce((a,b)=>a+b);
+}
+
+function sumPrimes(num) {
+  // Helper function to check primality
+  function isPrime(num) {
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i == 0)
+        return false;
+    }
+    return true;
+  }
+
+  // Check all numbers for primality
+  let sum = 0;
+  for (let i = 2; i <= num; i++) {
+    if (isPrime(i))
+      sum += i;
+  }
+  return sum;
+}
+
+
+function sumPrimes(num) {
+  // Check all numbers for primality
+  let primes = [];
+  for (let i = 2; i <= num; i++) {
+    if (primes.every((prime) => i % prime !== 0))
+      primes.push(i);
+  }
+  return primes.reduce((sum, prime) => sum + prime, 0);
+}
+
+
+function sumPrimes(num) {
+  // Prime number sieve
+  let isPrime = Array(num + 1).fill(true);
+  // 0 and 1 are not prime
+  isPrime[0] = false;
+  isPrime[1] = false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (isPrime[i]) {
+      // i has not been marked false -- it is prime
+      for (let j = i * i; j <= num; j += i)
+        isPrime[j] = false;
+    }
+  }
+
+  // Sum all values still marked prime
+  return isPrime.reduce(
+    (sum, prime, index) => prime ? sum + index : sum, 0
+  );
+}
+
+console.log(sumPrimes(10));
+
+/*Smallest Common Multiple
+Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
+
+The range will be an array of two numbers that will not necessarily be in numerical order.
+
+For example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is also evenly divisible by all numbers between 1 and 3. The answer here would be 6.*/
+
+function smallestCommons(arr) {
+  let arrSort=arr.slice(0).sort((a,b)=>a-b);
+  let arrDiv=[];
+  for(let i=arrSort[0];i<=arrSort[1];i++){
+    arrDiv.push(i);
+  }
+  let result=true;
+  let j=arrSort[0];
+  while(result){
+    if(arrDiv.every(a=>j%a==0)){
+      result=false;
+      return j;
+    }else{
+      j+=arrSort[0];
+    }
+  }
+}
+
+function smallestCommons(arr) {
+  // Setup
+  const [min, max] = arr.sort((a, b) => a - b);
+  const numberDivisors = max - min + 1;
+  // Largest possible value for SCM
+  let upperBound = 1;
+  for (let i = min; i <= max; i++) {
+    upperBound *= i;
+  }
+  // Test all multiples of 'max'
+  for (let multiple = max; multiple <= upperBound; multiple += max) {
+    // Check if every value in range divides 'multiple'
+    let divisorCount = 0;
+    for (let i = min; i <= max; i++) {
+      // Count divisors
+      if (multiple % i === 0) {
+        divisorCount += 1;
+      }
+    }
+    if (divisorCount === numberDivisors) {
+      return multiple;
+    }
+  }
+}
+
+
+function smallestCommons(arr) {
+  // Setup
+  const [min, max] = arr.sort((a, b) => a - b);
+  const range = Array(max - min + 1)
+    .fill(0)
+    .map((_, i) => i + min);
+  // Largest possible value for SCM
+  const upperBound = range.reduce((prod, curr) => prod * curr);
+  // Test all multiples of 'max'
+  for (let multiple = max; multiple <= upperBound; multiple += max) {
+    // Check if every value in range divides 'multiple'
+    const divisible = range.every((value) => multiple % value === 0);
+    if (divisible) {
+      return multiple;
+    }
+  }
+}
+
+
+function smallestCommons(arr) {
+  // Setup
+  const [min, max] = arr.sort((a, b) => a - b);
+  const range = Array(max - min + 1)
+    .fill(0)
+    .map((_, i) => i + min);
+  // GCD of two numbers
+  // https://en.wikipedia.org/wiki/Greatest_common_divisor#Euclid's_algorithm
+  const gcd = (a, b) => (b === 0) ? a : gcd(b, a % b);
+  // LCM of two numbers
+  // https://en.wikipedia.org/wiki/Least_common_multiple#Using_the_greatest_common_divisor
+  const lcm = (a, b) => a * b / gcd(a, b);
+  // LCM of multiple numbers
+  // https://en.wikipedia.org/wiki/Least_common_multiple#Other
+  return range.reduce((multiple, curr) => lcm(multiple, curr));
+}
+
+
+// Find the SCM of a range of numbers
+function smallestCommons(arr) {
+  let primeFactors = {};
+  const [min, max] = arr.sort((a, b) => a - b);
+  for (let i = min; i <= max; i++) {
+    // Factorize number in range
+    let primes = getPrimeFactors(i);
+    for (let j in primes) {
+      // Add factor to set or update number of occurrences
+      if (!primeFactors[j] || primes[j] > primeFactors[j]) {
+        primeFactors[j] = primes[j]
+      }
+    }
+  }
+  // Build SCM from factorization
+  let multiple = 1;
+  for (let i in primeFactors) {
+    multiple *= i ** primeFactors[i]
+  }
+  return multiple;
+}
+
+// Compute prime factors of a number
+function getPrimeFactors(num) {
+  const factors = {};
+  for (let prime = 2; prime <= num; prime++) {
+    // Count occurances of factor
+    // Note that composite values will not divide num
+    while ((num % prime) === 0) {
+      factors[prime] = (factors[prime]) ? factors[prime] + 1 : 1;
+      num /= prime;
+    }
+  }
+  return factors;
+}
+
+
+smallestCommons([1, 5]);
+/*Drop it
+Given the array arr, iterate through and remove each element starting from the first element (the 0 index) until the function func returns true when the iterated element is passed through it.
+
+Then return the rest of the array once the condition is satisfied, otherwise, arr should be returned as an empty array.*/
+
+
+function dropElements(arr, func) {
+  let copy=[];
+  for(let i in arr ){
+    if(func(arr[i])) return copy=arr.slice(i);
+  }
+  return [];
+}
+
+function dropElements(arr, func) {
+  while (arr.length > 0 && !func(arr[0])) {
+    arr.shift();
+  }
+  return arr;
+}
+
+function dropElements(arr, func) {
+  let sliceIndex = arr.findIndex(func);
+  return arr.slice(sliceIndex >= 0 ? sliceIndex : arr.length);
+}
+
+
+function dropElements(arr, func) {
+  // drop them elements.
+  let originalLen = arr.length;
+  for (let i = 0; i < originalLen; i++) {
+    if (func(arr[0])) {
+      break;
+    } else {
+      arr.shift();
+    }
+  }
+  return arr;
+}
+
+function dropElements(arr, func, i = 0) {
+  return i < arr.length && !func(arr[i])
+    ? (dropElements(arr.slice(i + 1), func, i))
+    : arr;
+}
+
+
+dropElements([1, 2, 3, 4], function(n) {
+  return n >= 3;
+});
+
+
+/*Steamroller
+Flatten a nested array. You must account for varying levels of nesting.*/
+
+function steamrollArray(arr) {
+  var newArr=[];
+  for(let i=0;i<arr.length;i++){
+    console.log('Array 1:',arr[i])
+    if(Array.isArray(arr[i])){
+      newArr.push(...steamrollArray(arr[i]));
+    }else{
+    newArr.push(arr[i]);  
+    }
+    console.log('New: ',newArr)
+  }
+  return newArr;
+}
+
+function steamrollArray(arr) {
+  const flat = [].concat(...arr);
+  return flat.some(Array.isArray) ? steamrollArray(flat) : flat;
+}
+
+function steamrollArray(arr) {
+  return arr
+    .toString()
+    .replace(",,", ",") // "1,2,,3" => "1,2,3"
+    .split(",") // ['1','2','3']
+    .map(function(v) {
+      if (v == "[object Object]") {
+        // bring back empty objects
+        return {};
+      } else if (isNaN(v)) {
+        // if not a number (string)
+        return v;
+      } else {
+        return parseInt(v); // if a number in a string, convert it
+      }
+    });
+}
+
+function steamrollArray(val,flatArr=[]) {
+  val.forEach(item => {
+    if (Array.isArray(item)) steamrollArray(item, flatArr);
+    else flatArr.push(item);
+  });
+  return flatArr;
+}
+
+function steamrollArray(arr, flatArr = []) {
+  const elem = arr.pop();
+  return elem
+    ? !Array.isArray(elem)
+      ? steamrollArray(arr, [elem, ...flatArr])
+      : steamrollArray(arr.concat(elem), flatArr)
+    : flatArr;
+}
+
