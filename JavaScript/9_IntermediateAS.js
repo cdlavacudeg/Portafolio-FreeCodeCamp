@@ -1105,3 +1105,125 @@ function binaryAgent(str) {
 }
 
 console.log(binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"));
+ /*Everything Be True
+Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
+
+In other words, you are given an array collection of objects. The predicate pre will be an object property and you need to return true if its value is truthy. Otherwise, return false.
+
+In JavaScript, truthy values are values that translate to true when evaluated in a Boolean context.
+
+Remember, you can access object properties through either dot notation or [] notation.*/
+
+function truthCheck(collection, pre) {
+  
+  return collection.every(obj=> obj.hasOwnProperty(pre)&& Boolean(obj[pre])==true);
+}
+
+function truthCheck(collection, pre) {
+  // Create a counter to check how many are true.
+  var counter = 0;
+  // Check for each object
+  for (var c in collection) {
+    // If it is has property and value is truthy
+    if (collection[c].hasOwnProperty(pre) && Boolean(collection[c][pre])) {
+      counter++;
+    }
+  }
+  // Outside the loop, check to see if we got true for all of them and return true or false
+  return counter == collection.length;
+}
+
+function truthCheck(collection, pre) {
+  return collection.every(function(element) {
+    return element.hasOwnProperty(pre) && Boolean(element[pre]);
+  });
+}
+function truthCheck(collection, pre) {
+  // Is everyone being true?
+  return collection.every(obj => obj[pre]);
+}
+
+console.log(truthCheck([
+  {"user": "Tinky-Winky", "sex": "male", "age": 0}, 
+  {"user": "Dipsy", "sex": "male", "age": 3}, 
+  {"user": "Laa-Laa", "sex": "female", "age": 5}, 
+  {"user": "Po", "sex": "female", "age": 4}
+  ], 
+  "age") );
+
+ /* Arguments Optional
+  Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
+  
+  For example, addTogether(2, 3) should return 5, and addTogether(2) should return a function.
+  
+  Calling this returned function with a single argument will then return the sum:
+  
+  var sumTwoAnd = addTogether(2);
+  sumTwoAnd(3) returns 5.
+  
+  If either argument isn't a valid number, return undefined.*/
+
+  function addTogether(...args) {
+    for (let i =0;i<args.length;i++){
+      if(typeof args[i]!='number'){
+        return undefined;
+      }
+    }
+  
+    if (args.length==1){
+      return (a)=>{
+              if(typeof a!='number'){
+              return undefined;}
+              return a + args[0];
+            }
+    }else{return args[0]+args[1];}
+    
+  }
+
+  function addTogether() {
+    const [first, second] = arguments;
+    if (typeof(first) !== "number")
+      return undefined;
+    if (second === undefined)
+      return (second) => addTogether(first, second);
+    if (typeof(second) !== "number")
+      return undefined;
+    return first + second;
+  }
+
+
+  function addTogether() {
+    const [first, second] = arguments;
+    // First argument is not a number
+    if (typeof(first) !== "number") {
+      return undefined;
+    }
+    // First argument is a number
+    //  and second argument is not defined
+    else if (second === undefined) {
+      function addSecond(second) {
+        // New argument is not a number
+        if (typeof(second) !== "number") {
+          return undefined;
+        }
+        // New argument is a number
+        else {
+          return first + second;
+        }
+      }
+      // Note: returning a *function*
+      return addSecond;
+    }
+    // First argument is a number
+    //  and second argument is not a number
+    else if (typeof(second) !== "number") {
+      return undefined;
+    }
+    // First argument is a number
+    //  and second argument is a number
+    else {
+      return first + second;
+    }
+  }
+  
+  console.log(addTogether(2)(2));
