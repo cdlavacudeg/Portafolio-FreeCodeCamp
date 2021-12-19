@@ -9,6 +9,7 @@ Las siguientes clases permiten que nuestro contenido sea responsive:
 ## Texto
 
 - `text-center`:Centrar el texto
+- `text-danger`: Cambior color de texto 
 
 ## Botones
 
