@@ -29,4 +29,3 @@ Take for example Bootstrap's col-md-* class. Here, md means medium, and * is a n
 - `row`: Crea el grid de 12 columnas
 - `col-xs-*`: * Numero de columnas especificado para extra-small (pantallas muy pequeñas)
 
-
