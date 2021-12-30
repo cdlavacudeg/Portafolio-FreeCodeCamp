@@ -87,3 +87,23 @@ jQuery also has a similar function called .text() that only alters text without 
 Now let's remove an HTML element from your page using jQuery.
 
 jQuery has a function called .remove() that will remove an HTML element entirely
+
+## Use appendTo to Move Elements with jQuery
+Now let's try moving elements from one div to another.
+
+jQuery has a function called appendTo() that allows you to select HTML elements and append them to another element.
+
+For example, if we wanted to move target4 from our right well to our left well, we would use:
+
+`S$("#target4").appendTo("#left-well");`
+
+## Clone an Element Using jQuery
+In addition to moving elements, you can also copy them from one place to another.
+
+jQuery has a function called clone() that makes a copy of an element.
+
+For example, if we wanted to copy target2 from our left-well to our right-well, we would use:
+
+`$("#target2").clone().appendTo("#right-well");`
+
+Did you notice this involves sticking two jQuery functions together? This is called function chaining and it's a convenient way to get things done with jQuery.
