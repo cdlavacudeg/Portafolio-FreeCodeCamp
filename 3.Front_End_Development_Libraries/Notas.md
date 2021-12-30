@@ -41,3 +41,12 @@ For example, let's make all of your button elements bounce. Just add this code i
 
 Note that we've already included both the jQuery library and the Animate.css library in the background so that you can use them in the editor. So you are using jQuery to apply the Animate.css bounce class to your button elements.
 
+## Remove Classes from an Element with jQuery
+In the same way you can add classes to an element with jQuery's addClass() function, you can remove them with jQuery's removeClass() function.
+
+Here's how you would do this for a specific button:
+
+`$("#target2").removeClass("btn-default");`
+
+Let's remove the btn-default class from all of our button elements.
+
