@@ -60,3 +60,14 @@ Here's how we would change its color to blue:
 `$("#target1").css("color", "blue");`
 
 This is slightly different from a normal CSS declaration, because the CSS property and its value are in quotes, and separated with a comma instead of a colon.
+
+## Disable an Element Using jQuery
+You can also change the non-CSS properties of HTML elements with jQuery. For example, you can disable buttons.
+
+When you disable a button, it will become grayed-out and can no longer be clicked.
+
+jQuery has a function called .prop() that allows you to adjust the properties of elements.
+
+Here's how you would disable all buttons:
+
+`$("button").prop("disabled", true);`
