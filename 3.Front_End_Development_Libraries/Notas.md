@@ -50,3 +50,13 @@ Here's how you would do this for a specific button:
 
 Let's remove the btn-default class from all of our button elements.
 
+## Change the CSS of an Element Using jQuery
+We can also change the CSS of an HTML element directly with jQuery.
+
+jQuery has a function called .css() that allows you to change the CSS of an element.
+
+Here's how we would change its color to blue:
+
+`$("#target1").css("color", "blue");`
+
+This is slightly different from a normal CSS declaration, because the CSS property and its value are in quotes, and separated with a comma instead of a colon.
