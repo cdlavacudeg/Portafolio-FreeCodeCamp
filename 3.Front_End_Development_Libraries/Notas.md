@@ -107,3 +107,43 @@ For example, if we wanted to copy target2 from our left-well to our right-well, 
 `$("#target2").clone().appendTo("#right-well");`
 
 Did you notice this involves sticking two jQuery functions together? This is called function chaining and it's a convenient way to get things done with jQuery.
+
+## Target the Parent of an Element Using jQuery
+Every HTML element has a parent element from which it inherits properties.
+
+For example, your jQuery Playground h3 element has the parent element of `<div class="container-fluid">`, which itself has the parent body.
+
+jQuery has a function called parent() that allows you to access the parent of whichever element you've selected.
+
+Here's an example of how you would use the parent() function if you wanted to give the parent element of the left-well element a background color of blue:
+
+`$("#left-well").parent().css("background-color", "blue")`
+
+## Target the Children of an Element Using jQuery
+When HTML elements are placed one level below another they are called children of that element. For example, the button elements in this challenge with the text #target1, #target2, and #target3 are all children of the `<div class="well" id="left-well">` element.
+
+jQuery has a function called children() that allows you to access the children of whichever element you've selected.
+
+Here's an example of how you would use the children() function to give the children of your left-well element the color blue:
+
+`$("#left-well").children().css("color", "blue")`
+
+## Target a Specific Child of an Element Using jQuery
+You've seen why id attributes are so convenient for targeting with jQuery selectors. But you won't always have such neat ids to work with.
+
+Fortunately, jQuery has some other tricks for targeting the right elements.
+
+jQuery uses CSS Selectors to target elements. The target:nth-child(n) CSS selector allows you to select all the nth elements with the target class or element type.
+
+Here's how you would give the third element in each well the bounce class:
+
+`$(".target:nth-child(3)").addClass("animated bounce");`
+
+## Target Even Elements Using jQuery
+You can also target elements based on their positions using :odd or :even selectors.
+
+Note that jQuery is zero-indexed which means the first element in a selection has a position of 0. This can be a little confusing as, counter-intuitively, :odd selects the second element (position 1), fourth element (position 3), and so on.
+
+Here's how you would target all the odd elements with class target and give them classes:
+
+`$(".target:odd").addClass("animated shake");`
