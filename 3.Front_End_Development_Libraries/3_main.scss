@@ -1,16 +1,33 @@
 $text-color:red;
 
+/*Mixins*/
+@mixin border-radius($radius){
+    -webkit-border-radius:$radius;
+    -moz-border-radius:$radius;
+    -ms-border-radius:$radius;
+    border-radius: $radius;
+}
+
+/**/
 .header{
     text-align: center;
 }
 .blog-post {
-    h1 {
+    h2 {
         text-align: center;
         color: blue;
       }
-      
+
     p {
     font-size: 20px;
     }
 }
+
+
+#awesome {
+    width: 150px;
+    height: 150px;
+    background-color: green;
+    @include border-radius(15px);
+  }
 
