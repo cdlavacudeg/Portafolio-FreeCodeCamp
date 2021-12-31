@@ -72,3 +72,17 @@ $j:1;
     .text2-#{$j} {font-size: 15px * $j;}
     $j:$j+1;
 }
+
+h3{
+    text-align: center;
+  }
+.info{
+    width: 200px;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+.info-important{
+    @extend .info;
+    background-color: magenta;
+}

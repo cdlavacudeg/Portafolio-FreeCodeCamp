@@ -83,3 +83,17 @@ div {
 .text2-5 {
   font-size: 75px;
 }
+
+h3 {
+  text-align: center;
+}
+
+.info, .info-important {
+  width: 200px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.info-important {
+  background-color: magenta;
+}
