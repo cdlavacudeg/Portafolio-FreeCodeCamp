@@ -1,5 +1,3 @@
-/*Mixins*/
-/**/
 .header {
   text-align: center;
 }
@@ -20,4 +18,11 @@
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   border-radius: 15px;
+}
+
+#box {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  border: 3px solid black;
 }

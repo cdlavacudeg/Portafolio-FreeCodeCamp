@@ -243,3 +243,32 @@ div {
   @include box-shadow(0px, 0px, 4px, #fff);
 }
 ```
+## Use @if and @else to Add Logic To Your Styles
+The @if directive in Sass is useful to test for a specific case - it works just like the if statement in JavaScript.
+
+```
+@mixin make-bold($bool) {
+  @if $bool == true {
+    font-weight: bold;
+  }
+}
+```
+
+And just like in JavaScript, @else if and @else test for more conditions:
+
+```
+@mixin text-effect($val) {
+  @if $val == danger {
+    color: red;
+  }
+  @else if $val == alert {
+    color: yellow;
+  }
+  @else if $val == success {
+    color: green;
+  }
+  @else {
+    color: black;
+  }
+}
+```
