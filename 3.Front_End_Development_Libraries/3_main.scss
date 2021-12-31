@@ -66,3 +66,9 @@ div {
     height: 200px;
     width: 200px;
   }
+
+$j:1;
+@while $j<6{
+    .text2-#{$j} {font-size: 15px * $j;}
+    $j:$j+1;
+}
