@@ -147,3 +147,67 @@ Note that jQuery is zero-indexed which means the first element in a selection ha
 Here's how you would target all the odd elements with class target and give them classes:
 
 `$(".target:odd").addClass("animated shake");`
+
+
+# SASS
+Sass, or "Syntactically Awesome StyleSheets", is a language extension of CSS. It adds features that aren't available in basic CSS, which make it easier for you to simplify and maintain the style sheets for your projects.
+
+[Install Sass](https://sass-lang.com/install)
+
+`sass --no-source-map -w 3_main.scss 3_main.css`
+
+
+## Store Data with Sass Variables
+
+One feature of Sass that's different than CSS is it uses variables. They are declared and set to store data, similar to JavaScript.
+
+In JavaScript, variables are defined using the let and const keywords. In Sass, variables start with a $ followed by the variable name.
+Here are a couple examples:
+
+```
+$main-fonts: Arial, sans-serif;
+$headings-color: green;
+```
+
+And to use the variables:
+
+```
+h1 {
+  font-family: $main-fonts;
+  color: $headings-color;
+}
+```
+
+One example where variables are useful is when a number of elements need to be the same color. If that color is changed, the only place to edit the code is the variable value.
+
+
+## Nest CSS with Sass
+
+Sass allows nesting of CSS rules, which is a useful way of organizing a style sheet.
+
+Normally, each element is targeted on a different line to style it, like so:
+
+nav {
+  background-color: red;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline-block;
+}
+For a large project, the CSS file will have many lines and rules. This is where nesting can help organize your code by placing child style rules within the respective parent elements:
+
+nav {
+  background-color: red;
+
+  ul {
+    list-style: none;
+
+    li {
+      display: inline-block;
+    }
+  }
+}
