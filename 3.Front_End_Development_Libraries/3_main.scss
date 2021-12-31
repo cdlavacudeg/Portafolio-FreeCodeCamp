@@ -56,3 +56,13 @@ $text-color:red;
         font-size:15px * $j;
     }    
 }
+
+@each $i in blue,black,red {
+    .#{$i}-bg {
+        background-color: $i;
+    }
+}
+div {
+    height: 200px;
+    width: 200px;
+  }
