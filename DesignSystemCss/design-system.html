@@ -7,27 +7,35 @@
     <title>Design System</title>
     <link rel="stylesheet" href="index.css">
 </head>
-<body class="bg-dark" >
-    <!-- CHALLENGE
-    1. Give the first div a light blue background and dark text color
-    2. Give the second div a white background and dark text color
-    3. Give the third div a light blue background with a 20% alpha value and white text -->
-
+<body class="bg-dark text-white" >
     <div class="container">
-        <h1 class="text-white">Design System</h1>
-
-        <div class="bg-accent text-dark" style="padding: 1rem">
-            light blue bg, with dark text
-        </div>
-        <div class="bg-white text-dark" style="padding: 1rem">
-            white bg, with dark text
-        </div>
-        <div class="text-white example" style="padding: 1rem">
-            light blue bg with a 20% alpha and white text
-        </div>
-
-        <section class="colors">
-
+        <h1>Design System</h1>
+        
+        <section id="colors">
+            <h2><span>01</span> colors</h2>
+            <div class="flex">
+                <div style="flex-grow: 1;">
+                    <div class="bg-dark text-white" style="padding: 3rem 1rem 1rem; border: 1px solid white">
+                        #OBOD17
+                    </div>
+                    <p><span class="text-accent">RGB</span> 11, 13, 23</p>
+                    <p><span class="text-accent">HSL</span> 230°, 35%, 7%</p>
+                </div>
+                <div style="flex-grow: 1;">
+                    <div class="bg-accent text-dark" style="padding: 3rem 1rem 1rem; border: 1px solid white">
+                        #DOD6F9
+                    </div>
+                    <p><span class="text-accent">RGB</span> 208, 214, 249</p>
+                    <p><span class="text-accent">HSL</span> 231°, 77%, 90%</p>
+                </div>
+                <div style="flex-grow: 1;">
+                    <div class="bg-white text-dark" style="padding: 3rem 1rem 1rem; border: 1px solid white">
+                        #FFFFFF
+                    </div>
+                    <p><span class="text-accent">RGB</span> 255, 255, 255</p>
+                    <p><span class="text-accent">HSL</span> 0°, 0%, 100%</p>
+                </div>
+            </div>
         </section>
     </div>
     
