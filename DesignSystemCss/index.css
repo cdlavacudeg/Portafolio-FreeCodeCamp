@@ -299,6 +299,10 @@ select{
         margin:0;
         flex-direction: column;
         transform: translateX(100%);
+        transition: transform 500ms ease-in-out;
+    }
+    .primary-navigation[data-visible="true"]{
+        transform: translateX(0);
     }
     .primary-navigation.underline-indicators > .active{
         border:0;
@@ -312,10 +316,16 @@ select{
         background: transparent;
         background-image: url('assets/shared/icon-hamburger.svg');
         background-repeat: no-repeat;
+        background-position: center;
         border: 0;
         width:2.4rem;
         aspect-ratio: 1;
+        transition: background-image 500ms ease;
     }
+    .mobile-nav-toggle[aria-expanded="true"]{
+        background-image: url('assets/shared/icon-close.svg');
+    }
+
 }
 
 
