@@ -457,3 +457,25 @@ body{
         background-image: url('assets/home/background-home-desktop.jpg');
     }
 }
+
+/*destination */
+body{
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+.destination{
+    background-image: url('assets/destination/background-destination-mobile.jpg');
+}
+
+@media (min-width:375px) {
+    .destination{
+        background-image: url('assets/destination/background-destination-tablet.jpg');
+    }
+}
+
+@media (min-width:768px) {
+    .destination{
+        background-image: url('assets/destination/background-destination-desktop.jpg');
+    }
+}
