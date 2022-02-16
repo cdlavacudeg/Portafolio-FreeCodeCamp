@@ -14,7 +14,6 @@
     --fs-600: 2rem;
     --fs-500: 1.6rem;
     --fs-400: 1.5rem;
-    
     --fs-300: 1.6rem;
     --fs-200: 1.4rem;
 
@@ -137,37 +136,6 @@ select{
     padding-inline: 2em;
     max-width: 128rem;
     margin-inline: auto;
-}
-
-.grid-container{
-    display: grid;
-    text-align: center;
-    place-items: center;
-    padding-inline: 1.6rem;
-}
-
-.grid-container * {
-    max-width: 50ch;
-    margin: 25px auto;
-}
-@media(min-width:768px){
-    .grid-container{
-        text-align: left;
-        column-gap: var(--contairner-gap,3.2rem);
-        grid-template-columns: minmax(1rem,1fr) repeat(2,minmax(0px,64rem)) minmax(1rem,1fr);
-    }
-    .grid-container > *:first-child{
-        grid-column: 2;
-    }
-    
-    .grid-container >*:last-child{
-        grid-column: 3;
-    }
-
-    .grid-container--home{
-        padding-bottom: max(6rem,20vh);
-        align-items: end;
-    }
 }
 
 /* screen reader */
@@ -477,5 +445,76 @@ body{
 @media (min-width:768px) {
     .destination{
         background-image: url('assets/destination/background-destination-desktop.jpg');
+    }
+}
+
+
+/* -------------------------   */
+/* Layout   */
+/* -------------------------   */
+.grid-container{
+    display: grid;
+    text-align: center;
+    place-items: center;
+    padding-inline: 1.6rem;
+    padding-bottom: 4rem;
+}
+
+.grid-container * {
+    max-width: 50ch;
+    margin: 15px auto;
+}
+
+/*destination layout*/
+.grid-container--destination{
+    grid-template-areas: 
+        'title'
+        'image'
+        'tabs'
+        'content';
+}
+.numbered-title{
+    grid-area:title;
+}
+.grid-container--destination > img{
+    grid-area:image;
+    max-width: 60%;
+}
+
+.grid-container--destination > .tab-list{
+    grid-area: tabs;
+}
+
+.grid-container--destination > .destination-info{
+    grid-area: content;
+}
+
+.destination-meta{
+    flex-direction: column;
+    border-top: 1px solid hsl( var(--clr-white) / .1);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+.destination-meta *{
+    margin: 10px auto
+}
+
+@media(min-width:768px){
+    .grid-container{
+        text-align: left;
+        column-gap: var(--contairner-gap,3.2rem);
+        grid-template-columns: minmax(1rem,1fr) repeat(2,minmax(0px,64rem)) minmax(1rem,1fr);
+    }
+    .grid-container > *:first-child{
+        grid-column: 2;
+    }
+    
+    .grid-container >*:last-child{
+        grid-column: 3;
+    }
+
+    .grid-container--home{
+        padding-bottom: max(6rem,20vh);
+        align-items: end;
     }
 }
