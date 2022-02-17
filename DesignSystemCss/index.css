@@ -327,6 +327,7 @@ select{
     border:0;
     cursor: pointer;
     border-bottom: .32rem solid hsl(var(--clr-white) /0);
+    background-color: transparent;
 }
 
 @media (min-width:768px) {
@@ -467,6 +468,7 @@ body{
 
 /*destination layout*/
 .grid-container--destination{
+    --flow-space:2rem;
     grid-template-areas: 
         'title'
         'image'
@@ -495,6 +497,9 @@ body{
     padding-top: 1.5rem;
     margin-top: 1.5rem;
 }
+.destination-meta p{
+    font-size: 2.8rem;
+}
 .destination-meta *{
     margin: 10px auto
 }
@@ -503,9 +508,13 @@ body{
     .numbered-title{
         justify-self: start;
         margin-block-start: 3.2rem;
+        margin-inline-start: 3.2rem;
     }
     .destination-meta{
         flex-direction: row;
+    }
+    .grid-container--destination > img {
+        max-width: 90%;
     }
 }
 
@@ -515,16 +524,35 @@ body{
         column-gap: var(--contairner-gap,3.2rem);
         grid-template-columns: minmax(1rem,1fr) repeat(2,minmax(0px,64rem)) minmax(1rem,1fr);
     }
-    .grid-container > *:first-child{
-        grid-column: 2;
-    }
     
-    .grid-container >*:last-child{
-        grid-column: 3;
-    }
-
     .grid-container--home{
         padding-bottom: max(6rem,20vh);
         align-items: end;
     }
+    .grid-container--home > *:first-child{
+        grid-column: 2;
+    }
+    
+    .grid-container--home >*:last-child{
+        grid-column: 3;
+    }
+
+    .grid-container--destination{
+        justify-items: start;
+        align-content: start;
+        grid-template-areas: 
+            '. title title .'
+            '. image tabs .'
+            '. image content .';
+    }
+
+    .destination-meta{
+        --gap:min(6vw,8rem);
+        justify-self: start;  
+    }
+
+    .destination-meta *{
+        margin: 10px 0;
+    }
+    
 }
