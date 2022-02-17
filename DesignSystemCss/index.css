@@ -499,6 +499,16 @@ body{
     margin: 10px auto
 }
 
+@media (min-width:542px) {
+    .numbered-title{
+        justify-self: start;
+        margin-block-start: 3.2rem;
+    }
+    .destination-meta{
+        flex-direction: row;
+    }
+}
+
 @media(min-width:768px){
     .grid-container{
         text-align: left;
