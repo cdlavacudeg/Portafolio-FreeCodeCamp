@@ -428,11 +428,7 @@ body{
 }
 
 /*destination */
-body{
-    background-size: cover;
-    background-position: bottom center;
-    background-repeat: no-repeat;
-}
+
 .destination{
     background-image: url('assets/destination/background-destination-mobile.jpg');
 }
@@ -449,6 +445,22 @@ body{
     }
 }
 
+/*crew */
+.crew{
+    background-image: url('assets/crew/background-crew-mobile.jpg');
+}
+
+@media (min-width:375px) {
+    .crew{
+        background-image: url('assets/crew/background-crew-tablet.jpg');
+    }
+}
+
+@media (min-width:768px) {
+    .crew{
+        background-image: url('assets/crew/background-crew-desktop.jpg');
+    }
+}
 
 /* -------------------------   */
 /* Layout   */
@@ -504,6 +516,29 @@ body{
     margin: 10px auto
 }
 
+/*crew Layout*/
+.grid-container--crew{
+    --flow-space:2rem;
+    grid-template-areas: 
+        'title'
+        'image'
+        'dots'
+        'content';
+}
+.grid-container--crew > img{
+    grid-area:image;
+    max-width: 60%;
+    border-bottom: 1px solid hsl( var(--clr-white) / .1);
+}
+
+.grid-container--crew > .dot-indicators{
+    grid-area: dots;
+}
+
+.grid-container--crew > .crew-info{
+    grid-area: content;
+}
+
 @media (min-width:542px) {
     .numbered-title{
         justify-self: start;
@@ -513,10 +548,22 @@ body{
     .destination-meta{
         flex-direction: row;
     }
-    .grid-container--destination > img {
+    .grid-container--destination > img,
+    .grid-container--crew > img {
         max-width: 90%;
     }
-}
+
+    .grid-container--crew{
+        justify-items: start;
+        align-content: start;
+        grid-template-areas: 
+            'title'
+            'content'
+            'dots'
+            'image';
+    }
+}    
+    
 
 @media(min-width:768px){
     .grid-container{
@@ -554,5 +601,16 @@ body{
     .destination-meta *{
         margin: 10px 0;
     }
-    
+
+    .grid-container--crew{
+        justify-items: start;
+        align-content: start;
+        grid-template-areas: 
+            '. title . .'
+            '. content image .'
+            '. dots image .';
+    }  
 }
+
+
+
