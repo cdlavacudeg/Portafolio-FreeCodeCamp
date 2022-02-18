@@ -556,12 +556,14 @@ body{
     .grid-container--crew{
         justify-items: start;
         align-content: start;
+        padding-bottom: 0;
         grid-template-areas: 
             'title'
             'content'
             'dots'
             'image';
     }
+
 }    
     
 
@@ -609,7 +611,23 @@ body{
             '. title . .'
             '. content image .'
             '. dots image .';
+    }
+    .grid-container--crew *{
+        margin: 0;
+        justify-items: start;
+        align-content: start;
+        grid-template-areas: 
+            '. title . .'
+            '. content image .'
+            '. dots image .';
     }  
+
+    .grid-container--crew > .dot-indicators{
+        justify-self: start;
+    }
+    .grid-container--crew > img{
+        align-self: end;
+    }
 }
 
 
