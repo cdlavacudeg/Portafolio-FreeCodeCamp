@@ -95,7 +95,6 @@ body{
 img,
 picture{
     max-width: 100%;
-    display: block;
 }
 /* make forms easier to work with */
 input,
